@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magnetic Moments — Colorado Wedding Keepsake Experience</title>
+<meta name="description" content="A live wedding keepsake experience. Guests choose a favorite photo from their own phone — we print, cut, and press it into a magnet on site, in Arvada and across Colorado.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#F1ECE1;
+    --ivory-deep:#E8E0D0;
+    --paper:#F7F3EA;
+    --charcoal:#1B1815;
+    --charcoal-soft:#242019;
+    --walnut:#4A3628;
+    --walnut-deep:#2B1F17;
+    --walnut-mid:#6B4F3A;
+    --brass:#A9824C;
+    --brass-light:#CBA96B;
+    --brass-dim:#8A6A3E;
+    --olive:#565F45;
+    --line-dark:rgba(27,24,21,0.14);
+    --line-light:rgba(241,236,225,0.22);
+    --serif:"Fraunces", Georgia, serif;
+    --sans:"Archivo", Helvetica, Arial, sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  html, body{overflow-x:hidden; width:100%;}
+  body{
+    margin:0;
+    background:var(--ivory);
+    color:var(--charcoal);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    position:relative;
+  }
+
+  /* subtle paper grain overlay */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:9999;
+    opacity:0.035;
+    mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  h1,h2,h3,p,figure{margin:0;}
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  section{position:relative;}
+
+  .eyebrow{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:400;
+    font-size:16px;
+    letter-spacing:0.02em;
+    color:var(--brass-dim);
+  }
+
+  .eyebrow.on-dark{color:var(--brass-light);}
+
+  h1,h2,h3{
+    font-family:var(--serif);
+    font-weight:500;
+    letter-spacing:-0.01em;
+    color:inherit;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--sans);
+    font-size:13.5px;
+    font-weight:600;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:16px 30px;
+    border:1px solid currentColor;
+    background:transparent;
+    cursor:pointer;
+    transition:background 0.35s ease, color 0.35s ease;
+    white-space:nowrap;
+  }
+  .btn-brass{
+    color:var(--charcoal);
+    border-color:var(--brass);
+    background:var(--brass);
+  }
+  .btn-brass:hover{background:var(--brass-light); border-color:var(--brass-light);}
+  .btn-line-dark{
+    color:var(--charcoal);
+    border-color:var(--charcoal);
+  }
+  .btn-line-dark:hover{background:var(--charcoal); color:var(--ivory);}
+  .btn-line-light{
+    color:var(--ivory);
+    border-color:var(--line-light);
+  }
+  .btn-line-light:hover{background:var(--ivory); color:var(--charcoal); border-color:var(--ivory);}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:500;
+    padding:20px 0;
+    transition:background 0.4s ease, padding 0.4s ease, border-color 0.4s ease;
+    border-bottom:1px solid transparent;
+  }
+  header.nav .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .word-mark{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:18px;
+    letter-spacing:0.14em;
+    color:var(--ivory);
+  }
+  header.nav.scrolled{
+    background:rgba(241,236,225,0.94);
+    backdrop-filter:blur(6px);
+    padding:14px 0;
+    border-bottom:1px solid var(--line-dark);
+  }
+  header.nav.scrolled .word-mark{color:var(--charcoal);}
+  header.nav.scrolled .btn-line-light{color:var(--charcoal); border-color:var(--charcoal);}
+  header.nav.scrolled .btn-line-light:hover{background:var(--charcoal); color:var(--ivory);}
+  .nav-cta{font-size:12px; padding:11px 22px;}
+  @media(max-width:480px){
+    .word-mark{font-size:13px; letter-spacing:0.08em;}
+    .nav-cta{font-size:9.5px; padding:9px 13px; letter-spacing:0.05em;}
+  }
+
+  /* ---------- IMAGE PLACEHOLDERS ---------- */
+  .ph{
+    position:relative;
+    overflow:hidden;
+    background:
+      linear-gradient(155deg, var(--walnut-mid) 0%, var(--walnut) 45%, var(--walnut-deep) 100%);
+  }
+  .ph::after{
+    content:"";
+    position:absolute; inset:0;
+    background:radial-gradient(circle at 30% 20%, rgba(255,255,255,0.08), transparent 60%);
+  }
+  .ph.dark{
+    background:linear-gradient(155deg, #2A2620 0%, #1B1815 60%, #100E0C 100%);
+  }
+  .ph.ivory{
+    background:linear-gradient(155deg, var(--ivory-deep) 0%, var(--ivory) 60%);
+  }
+  .ph-tag{
+    position:absolute;
+    left:16px; bottom:16px;
+    right:16px;
+    font-family:var(--sans);
+    font-size:11px;
+    letter-spacing:0.03em;
+    line-height:1.5;
+    color:var(--ivory);
+    background:rgba(20,17,14,0.55);
+    padding:9px 12px;
+    z-index:2;
+  }
+  .ph-tag b{color:var(--brass-light); font-weight:600;}
+  .ph-frame{
+    position:absolute; inset:10px;
+    border:1px solid rgba(203,169,107,0.35);
+    z-index:1;
+    pointer-events:none;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh;
+    display:flex;
+    align-items:flex-end;
+    padding-top:120px;
+  }
+  .hero .ph{position:absolute; inset:0; z-index:0;}
+  .hero .ph::before{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(16,14,12,0.15) 0%, rgba(16,14,12,0.55) 68%, rgba(12,10,9,0.85) 100%);
+    z-index:1;
+  }
+  .hero-inner{
+    position:relative;
+    z-index:2;
+    width:100%;
+    padding-bottom:88px;
+  }
+  .hero-inner .wrap{max-width:820px; margin:0;}
+  .hero .eyebrow{display:block; margin-bottom:22px;}
+  .hero h1{
+    color:var(--ivory);
+    font-size:clamp(38px, 6.4vw, 72px);
+    line-height:1.06;
+    font-weight:500;
+  }
+  .hero h1 em{font-style:italic; color:var(--brass-light); font-weight:400;}
+  .hero p.sub{
+    margin-top:26px;
+    max-width:520px;
+    color:rgba(241,236,225,0.88);
+    font-size:17px;
+    line-height:1.65;
+  }
+  .hero .cta-row{margin-top:38px; display:flex; gap:18px; flex-wrap:wrap; align-items:center;}
+  .hero .cta-note{font-size:13px; color:rgba(241,236,225,0.6); font-family:var(--serif); font-style:italic;}
+  .scroll-cue{
+    position:absolute;
+    right:28px; bottom:36px;
+    z-index:2;
+    color:rgba(241,236,225,0.55);
+    font-family:var(--serif); font-style:italic; font-size:13px;
+    display:none;
+  }
+  @media(min-width:860px){ .scroll-cue{display:block;} }
+  @media(max-width:640px){
+    .hero{padding-top:96px;}
+    .hero .ph .ph-tag{top:78px; bottom:auto; right:16px; left:16px;}
+    .hero-inner{padding-bottom:56px;}
+  }
+
+  /* ---------- GENERIC SECTION SPACING ---------- */
+  .section{padding:112px 0;}
+  .section.tight{padding:96px 0;}
+  @media(max-width:768px){
+    .section{padding:76px 0;}
+    .section.tight{padding:64px 0;}
+  }
+
+  .section-charcoal{background:var(--charcoal); color:var(--ivory);}
+  .section-walnut{background:var(--walnut-deep); color:var(--ivory);}
+  .section-paper{background:var(--paper);}
+
+  hr.rule{
+    border:none;
+    border-top:1px solid var(--line-dark);
+    margin:0;
+  }
+  .rule-light{border-top:1px solid var(--line-light) !important;}
+
+  /* ---------- CONCEPT ---------- */
+  .concept-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:64px;
+    align-items:start;
+  }
+  @media(max-width:860px){ .concept-grid{grid-template-columns:1fr; gap:36px;} }
+  .concept-grid h2{font-size:clamp(30px,4vw,44px); line-height:1.15; max-width:480px;}
+  .concept-grid .body-copy{margin-top:26px; max-width:480px; font-size:17px; color:#3A342C;}
+  .concept-quote{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:clamp(22px,2.6vw,30px);
+    line-height:1.35;
+    color:var(--walnut);
+    border-left:1px solid var(--brass);
+    padding-left:28px;
+    align-self:center;
+  }
+
+  /* ---------- HOW IT WORKS ---------- */
+  .how-head{max-width:560px; margin-bottom:64px;}
+  .how-head h2{font-size:clamp(30px,4vw,44px);}
+  .how-head p{margin-top:16px; font-size:16px; color:#4a443c;}
+  .how-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:0;
+  }
+  .how-step{
+    padding:0 28px 0 0;
+    border-left:1px solid var(--line-dark);
+    padding-left:28px;
+  }
+  .how-step:first-child{border-left:none; padding-left:0;}
+  .how-num{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:44px;
+    color:var(--brass);
+    line-height:1;
+  }
+  .how-step h3{margin-top:18px; font-size:20px; font-weight:500;}
+  .how-step p{margin-top:10px; font-size:14.5px; color:#4a443c; line-height:1.6;}
+  @media(max-width:860px){
+    .how-grid{grid-template-columns:1fr 1fr; gap:36px 28px;}
+    .how-step{border-left:none; padding-left:0;}
+  }
+  @media(max-width:560px){
+    .how-grid{grid-template-columns:1fr; gap:32px;}
+  }
+  .how-note{
+    margin-top:56px;
+    padding-top:28px;
+    border-top:1px solid var(--line-dark);
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:16px;
+    color:var(--walnut);
+    max-width:640px;
+  }
+
+  /* ---------- CRAFT ---------- */
+  .craft-head{max-width:600px; margin-bottom:56px;}
+  .craft-head h2{font-size:clamp(30px,4vw,44px); color:var(--ivory);}
+  .craft-head p{margin-top:18px; font-size:16.5px; color:rgba(241,236,225,0.78); line-height:1.7;}
+  .craft-strip{
+    display:grid;
+    grid-template-columns:1.15fr 1fr 1fr;
+    gap:20px;
+  }
+  .craft-strip .ph{aspect-ratio:4/5;}
+  .craft-strip .ph:first-child{aspect-ratio:auto;}
+  @media(max-width:860px){
+    .craft-strip{grid-template-columns:1fr; }
+    .craft-strip .ph{aspect-ratio:4/3 !important;}
+  }
+  .craft-cap{
+    margin-top:14px;
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:14px;
+    color:rgba(241,236,225,0.55);
+  }
+
+  /* ---------- GALLERY ---------- */
+  .gallery-wrap{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;}
+  @media(max-width:900px){ .gallery-wrap{grid-template-columns:1fr; gap:36px;} }
+  .gallery-text h2{font-size:clamp(30px,4vw,46px); max-width:440px;}
+  .gallery-text p{margin-top:22px; font-size:17px; color:#3A342C; max-width:440px; line-height:1.7;}
+  .gallery-img .ph{aspect-ratio:6/7;}
+
+  /* ---------- WHY ---------- */
+  .why-grid{display:grid; grid-template-columns:1fr 1fr; gap:0 64px;}
+  @media(max-width:860px){ .why-grid{grid-template-columns:1fr;} }
+  .why-head{margin-bottom:44px;}
+  .why-head h2{font-size:clamp(30px,4vw,44px); max-width:520px;}
+  .why-list{list-style:none; margin:0; padding:0;}
+  .why-list li{
+    padding:22px 0;
+    border-top:1px solid var(--line-dark);
+    font-size:17px;
+    line-height:1.55;
+    color:#2b2620;
+    display:flex;
+    gap:16px;
+  }
+  .why-list li:last-child{border-bottom:1px solid var(--line-dark);}
+  .why-list li span.mark{
+    font-family:var(--serif);
+    font-style:italic;
+    color:var(--brass-dim);
+    font-size:18px;
+    flex-shrink:0;
+  }
+
+  /* ---------- PACKAGES ---------- */
+  .pkg-head{max-width:640px; margin-bottom:16px;}
+  .pkg-head h2{font-size:clamp(30px,4vw,44px); color:var(--ivory);}
+  .pkg-note{margin-top:18px; font-size:16px; color:rgba(241,236,225,0.72); max-width:600px; line-height:1.7;}
+  .pkg-table{
+    margin-top:60px;
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    border-top:1px solid var(--line-light);
+  }
+  .pkg-col{
+    padding:36px 30px;
+    border-right:1px solid var(--line-light);
+    border-bottom:1px solid var(--line-light);
+  }
+  .pkg-col:last-child{border-right:none;}
+  .pkg-range{font-family:var(--sans); font-size:13px; letter-spacing:0.05em; color:rgba(241,236,225,0.6);}
+  .pkg-price{font-family:var(--serif); font-size:clamp(34px,4vw,46px); color:var(--brass-light); margin-top:10px;}
+  .pkg-includes{margin-top:22px; font-size:14.5px; color:rgba(241,236,225,0.78); line-height:1.75;}
+  @media(max-width:768px){
+    .pkg-table{grid-template-columns:1fr;}
+    .pkg-col{border-right:none;}
+  }
+  .pkg-extra{
+    margin-top:36px;
+    padding-top:28px;
+    border-top:1px solid var(--line-light);
+    display:flex; flex-wrap:wrap; gap:28px; justify-content:space-between;
+  }
+  .pkg-extra p{font-size:14.5px; color:rgba(241,236,225,0.72); max-width:460px; line-height:1.7;}
+
+  /* ---------- FOUNDING ---------- */
+  .founding{
+    border:1px solid var(--brass);
+    padding:52px 44px;
+    display:grid;
+    grid-template-columns:0.8fr 1.4fr;
+    gap:40px;
+    align-items:center;
+  }
+  @media(max-width:768px){ .founding{grid-template-columns:1fr; padding:40px 28px;} }
+  .founding h2{font-size:clamp(24px,3vw,32px);}
+  .founding p{margin-top:14px; font-size:16px; color:#3A342C; line-height:1.7;}
+
+  /* ---------- FAQ ---------- */
+  .faq-head{max-width:520px; margin-bottom:44px;}
+  .faq-head h2{font-size:clamp(30px,4vw,44px);}
+  .faq-list{border-top:1px solid var(--line-dark);}
+  details.faq-item{border-bottom:1px solid var(--line-dark); padding:22px 0;}
+  details.faq-item summary{
+    cursor:pointer;
+    list-style:none;
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:20px;
+    font-family:var(--serif);
+    font-size:19px;
+    font-weight:500;
+  }
+  details.faq-item summary::-webkit-details-marker{display:none;}
+  details.faq-item summary .icon{
+    font-family:var(--serif); font-style:italic; color:var(--brass-dim); font-size:22px; flex-shrink:0;
+    transition:transform 0.3s ease;
+  }
+  details.faq-item[open] summary .icon{transform:rotate(45deg);}
+  details.faq-item .faq-a{
+    margin-top:14px;
+    font-size:15.5px;
+    color:#4a443c;
+    max-width:640px;
+    line-height:1.7;
+  }
+
+  /* ---------- INQUIRE ---------- */
+  .inquire-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:64px;}
+  @media(max-width:900px){ .inquire-grid{grid-template-columns:1fr; gap:40px;} }
+  .inquire-text h2{font-size:clamp(32px,4.6vw,50px); color:var(--ivory); line-height:1.15;}
+  .inquire-text p{margin-top:20px; font-size:16.5px; color:rgba(241,236,225,0.75); max-width:400px; line-height:1.7;}
+  .inquire-text .contact-line{margin-top:44px; font-family:var(--serif); font-style:italic; font-size:15px; color:rgba(241,236,225,0.6);}
+
+  form.inquiry{display:grid; grid-template-columns:1fr 1fr; gap:26px 28px;}
+  form.inquiry .full{grid-column:1/-1;}
+  @media(max-width:560px){ form.inquiry{grid-template-columns:1fr;} }
+  .field label{
+    display:block;
+    font-size:12px;
+    letter-spacing:0.06em;
+    color:rgba(241,236,225,0.55);
+    margin-bottom:9px;
+  }
+  .field input, .field textarea{
+    width:100%;
+    background:transparent;
+    border:none;
+    border-bottom:1px solid var(--line-light);
+    color:var(--ivory);
+    font-family:var(--sans);
+    font-size:16px;
+    padding:8px 2px 12px;
+    outline:none;
+    transition:border-color 0.3s ease;
+  }
+  .field input::placeholder, .field textarea::placeholder{color:rgba(241,236,225,0.32);}
+  .field input:focus, .field textarea:focus{border-color:var(--brass-light);}
+  form.inquiry textarea{resize:vertical; min-height:70px;}
+  .form-foot{margin-top:14px; display:flex; align-items:center; gap:22px; flex-wrap:wrap;}
+  .form-msg{font-family:var(--serif); font-style:italic; font-size:14px; color:var(--brass-light); display:none;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--charcoal-soft); color:rgba(241,236,225,0.55); padding:48px 0;}
+  footer .wrap{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:18px;
+  }
+  footer .word-mark{font-size:15px; color:rgba(241,236,225,0.85);}
+  footer .foot-links{display:flex; gap:26px; font-size:13px; letter-spacing:0.03em; flex-wrap:wrap;}
+  footer .foot-links a{border-bottom:1px solid transparent;}
+  footer .foot-links a:hover{border-color:currentColor;}
+  @media(max-width:560px){
+    footer .wrap{flex-direction:column; align-items:flex-start;}
+    footer .foot-links{gap:16px 22px;}
+  }
+
+  ::selection{background:var(--brass); color:var(--charcoal);}
+</style>
+</head>
+<body>
+
+<header class="nav" id="siteNav">
+  <div class="wrap">
+    <a href="#hero" class="word-mark">MAGNETIC&nbsp;MOMENTS</a>
+    <a href="#inquire" class="btn btn-line-light nav-cta">Check Your Date</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="ph dark">
+    <div class="ph-tag"><b>Replace with:</b> looping video — printer feeding a photo, hands trimming it, the press descending, the finished magnet lifted out. Tight framing, warm tungsten light, guest faces optional.</div>
+  </div>
+  <div class="hero-inner">
+    <div class="wrap">
+      <span class="eyebrow on-dark">For Colorado weddings</span>
+      <h1>Photos they love.<br><em>Pressed while you celebrate.</em></h1>
+      <p class="sub">Guests choose a favorite photo from their phone. We turn it into a magnet on site.</p>
+      <div class="cta-row">
+        <a href="#inquire" class="btn btn-brass">Check Your Date</a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll to see how it works</div>
+</section>
+
+<!-- ============ THE CONCEPT ============ -->
+<section class="section section-paper" id="concept">
+  <div class="wrap concept-grid">
+    <div>
+      <h2>Your guests choose the photo. We make it theirs to take home.</h2>
+      <p class="body-copy">Your guests are already capturing the night on their phones. Magnetic Moments invites them to choose one they love — a dance-floor photo, old friends together, a family shot, a favorite with the two of you — and we turn it into a magnet they'll see again long after the wedding.</p>
+    </div>
+    <p class="concept-quote">A little piece of the night<br>that goes home with them.</p>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section section-paper" id="how" style="padding-top:0;">
+  <div class="wrap">
+    <hr class="rule" style="margin-bottom:96px;">
+    <div class="how-head">
+      <span class="eyebrow">How it works</span>
+      <h2 style="margin-top:14px;">A favorite photo becomes a magnet in four simple steps.</h2>
+      <p>Guests choose a photo they love from their phone. We take it from there.</p>
+    </div>
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="how-num">1</div>
+        <h3>Scan</h3>
+        <p>They scan the QR code at the station with their phone.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">2</div>
+        <h3>Choose</h3>
+        <p>They choose a favorite photo from their camera roll and crop it to fit.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">3</div>
+        <h3>We make it</h3>
+        <p>We print, precision-cut and hand-press their photo into a magnet — in just a few minutes.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">4</div>
+        <h3>Take it home</h3>
+        <p>Their magnet joins the display, ready to find and take home.</p>
+      </div>
+    </div>
+    <p class="how-note">Most guests are back on the dance floor before their magnet is finished.</p>
+  </div>
+</section>
+
+<!-- ============ THE CRAFT ============ -->
+<section class="section section-charcoal" id="craft">
+  <div class="wrap">
+    <div class="craft-head">
+      <span class="eyebrow on-dark">The press</span>
+      <h2 style="margin-top:14px;">Printed, cut, and pressed in front of your guests.</h2>
+      <p>The photo moves from printer to cutter to press in a few minutes, and guests can watch the whole process happen.</p>
+    </div>
+    <div class="craft-strip">
+      <div class="ph">
+        <div class="ph-frame"></div>
+        <div class="ph-tag"><b>Replace with:</b> the mechanical press mid-motion — brass press plate, red handle, a photo magnet visible under it. Close, warm light, shallow depth of field.</div>
+      </div>
+      <div class="ph">
+        <div class="ph-tag"><b>Replace with:</b> hands trimming a freshly printed photo on the cutter.</div>
+      </div>
+      <div class="ph">
+        <div class="ph-tag"><b>Replace with:</b> the finished magnet lifted straight out of the press, still warm, held between two fingers.</div>
+      </div>
+    </div>
+    <p class="craft-cap">From left: the press · the cut · the reveal</p>
+  </div>
+</section>
+
+<!-- ============ THE GALLERY ============ -->
+<section class="section section-paper" id="gallery">
+  <div class="wrap gallery-wrap">
+    <div class="gallery-img">
+      <div class="ph">
+        <div class="ph-frame"></div>
+        <div class="ph-tag"><b>Replace with:</b> the walnut gallery board mid-evening, dozens of finished magnets arranged in its slots, warm brass gallery light overhead.</div>
+      </div>
+    </div>
+    <div class="gallery-text">
+      <span class="eyebrow">The guest collection</span>
+      <h2 style="margin-top:14px;">A gallery that grows throughout the night.</h2>
+      <p>Finished magnets join the illuminated display as they're made. Guests return to find theirs, discover everyone else's, and watch the collection grow as the celebration unfolds.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY COUPLES CHOOSE IT ============ -->
+<section class="section section-paper" id="why">
+  <div class="wrap why-grid">
+    <div class="why-head">
+      <span class="eyebrow">Why couples choose it</span>
+      <h2 style="margin-top:14px;">Something to enjoy. Something to take home.</h2>
+    </div>
+    <ul class="why-list">
+      <li><span class="mark">—</span>A photo chosen by each guest, personal to them.</li>
+      <li><span class="mark">—</span>A live process guests can stop by and watch throughout the reception.</li>
+      <li><span class="mark">—</span>A finished magnet they leave with that night.</li>
+      <li><span class="mark">—</span>A refined wood-and-brass station designed to belong in the room.</li>
+      <li><span class="mark">—</span>Setup, service and breakdown completely handled for you.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ PACKAGES ============ -->
+<section class="section section-walnut" id="packages">
+  <div class="wrap">
+    <div class="pkg-head">
+      <span class="eyebrow on-dark">Packages</span>
+      <h2 style="margin-top:14px;">All-inclusive, by guest count.</h2>
+      <p class="pkg-note">Every package includes one custom photo magnet per guest, approximately four hours of live production, and a full gallery display — printed, cut, and pressed on site, with setup and breakdown handled by us.</p>
+    </div>
+    <div class="pkg-table">
+      <div class="pkg-col">
+        <div class="pkg-range">Up to 50 guests</div>
+        <div class="pkg-price">$1,250</div>
+        <div class="pkg-includes">One magnet per guest<br>~4 hours of live service<br>Gallery display &amp; setup</div>
+      </div>
+      <div class="pkg-col">
+        <div class="pkg-range">51–75 guests</div>
+        <div class="pkg-price">$1,500</div>
+        <div class="pkg-includes">One magnet per guest<br>~4 hours of live service<br>Gallery display &amp; setup</div>
+      </div>
+      <div class="pkg-col">
+        <div class="pkg-range">76–100 guests</div>
+        <div class="pkg-price">$1,750</div>
+        <div class="pkg-includes">One magnet per guest<br>~4 hours of live service<br>Gallery display &amp; setup</div>
+      </div>
+    </div>
+    <div class="pkg-extra">
+      <p>A second magnet for every guest can be added for $5 per guest.</p>
+      <p>Rates include standard travel within our Colorado service area. Weddings further afield are quoted individually.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOUNDING WEDDING — REMOVABLE SECTION ============ -->
+<!-- To remove: delete this entire <section id="founding"> block. -->
+<section class="section tight section-paper" id="founding">
+  <div class="wrap">
+    <div class="founding">
+      <div>
+        <span class="eyebrow">Select 2026 dates</span>
+        <h2 style="margin-top:12px;">Founding Wedding Collection</h2>
+      </div>
+      <p>A limited number of 2026 Colorado weddings are being selected for our inaugural collection. Introductory pricing may be available in exchange for permission to professionally photograph and film on site.</p>
+    </div>
+  </div>
+</section>
+<!-- ============ END REMOVABLE SECTION ============ -->
+
+<!-- ============ FAQ ============ -->
+<section class="section section-paper" id="faq">
+  <div class="wrap">
+    <div class="faq-head">
+      <span class="eyebrow">Questions</span>
+      <h2 style="margin-top:14px;">A few things couples ask.</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Do you take the photos?<span class="icon">+</span></summary>
+        <p class="faq-a">Every image comes from a guest's own phone, often a photo taken just moments earlier. We handle the printing, cutting and pressing.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How does my guest get their magnet?<span class="icon">+</span></summary>
+        <p class="faq-a">Once pressed, it's placed on the gallery display for guests to find and take home before they leave.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How many magnets does each guest get?<span class="icon">+</span></summary>
+        <p class="faq-a">One is included per guest in every package. A second-per-guest option is available for $5 per guest.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How long are you there for?<span class="icon">+</span></summary>
+        <p class="faq-a">Roughly four hours of live production, timed around your reception. Exact timing depends on your package and event logistics.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How much space do you need?<span class="icon">+</span></summary>
+        <p class="faq-a">A single station, about the footprint of a small bar cart, placed wherever it fits your layout and floor plan.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do guests need to download anything?<span class="icon">+</span></summary>
+        <p class="faq-a">Guests scan the QR code with their phone, then choose a photo they already have saved.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Where do you travel?<span class="icon">+</span></summary>
+        <p class="faq-a">We regularly serve the Front Range and select Colorado mountain and destination venues. Weddings farther afield are quoted individually.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can this be customized?<span class="icon">+</span></summary>
+        <p class="faq-a">Small details such as gallery signage and wedding-specific prompts can be tailored to your celebration, while the production process remains consistent for every guest.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FUTURE SOCIAL PROOF:
+After first real weddings, add a concise testimonial / real-wedding proof section here.
+Prioritize a bride or planner quote + venue/wedding identification + real photography.
+Do not add until authentic proof is available.
+-->
+
+<!-- ============ FINAL CTA / INQUIRY ============ -->
+<section class="section section-charcoal" id="inquire">
+  <div class="wrap inquire-grid">
+    <div class="inquire-text">
+      <h2>Let's make something your guests will take home.</h2>
+      <p>Tell us about your day. We'll follow up to confirm availability and walk through next steps.</p>
+      <p class="contact-line">Serving weddings throughout Colorado — the Front Range and Colorado's mountain venues.</p>
+    </div>
+    <!--
+      ============================================================
+      FORM SUBMISSION — NEEDS CONFIGURATION BEFORE PUBLISHING
+      ============================================================
+      This form is not yet connected to anything. As written, submitting
+      it will not send the inquiry anywhere.
+
+      Recommended fix (no custom backend required): Formspree.
+        1. Create a free account at https://formspree.io
+        2. Create a new form and copy the endpoint it gives you,
+           e.g. https://formspree.io/f/abcdwxyz
+        3. Replace YOUR_FORM_ID below in the action="" attribute with
+           that endpoint.
+        4. Formspree will email you (and can email the couple a copy)
+           every time this form is submitted — no server needed.
+        5. Verify the sending domain in Formspree once you know where
+           this page will be hosted, so submissions aren't marked spam.
+
+      The JavaScript at the bottom of the page (search "FORM SUBMISSION
+      HANDLER") already submits to whatever URL is in action="" below
+      and shows a real success or error message based on the response.
+      Once you drop in your Formspree endpoint, the form is fully
+      functional — no other changes needed.
+      ============================================================
+    -->
+    <form class="inquiry" id="inquiryForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <input type="hidden" name="_subject" value="New wedding inquiry — Magnetic Moments">
+      <div class="field">
+        <label for="names">Couple's names</label>
+        <input type="text" id="names" name="names" placeholder="Jordan &amp; Sam" required>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@email.com" required>
+      </div>
+      <div class="field">
+        <label for="phone">Phone (optional)</label>
+        <input type="tel" id="phone" name="phone" placeholder="(303) 555-0123">
+      </div>
+      <div class="field">
+        <label for="date">Wedding date</label>
+        <input type="date" id="date" name="date" required>
+      </div>
+      <div class="field">
+        <label for="venue">Venue</label>
+        <input type="text" id="venue" name="venue" placeholder="Venue name">
+      </div>
+      <div class="field">
+        <label for="city">City</label>
+        <input type="text" id="city" name="city" placeholder="e.g. Winter Park, CO">
+      </div>
+      <div class="field">
+        <label for="guests">Estimated guest count</label>
+        <input type="text" id="guests" name="guests" placeholder="e.g. 80">
+      </div>
+      <div class="field">
+        <label for="planner">Planner / planner email (optional)</label>
+        <input type="text" id="planner" name="planner" placeholder="Optional">
+      </div>
+      <div class="field full">
+        <label for="notes">Anything you'd like us to know</label>
+        <textarea id="notes" name="notes" placeholder="Timeline, founding-wedding interest, anything else"></textarea>
+      </div>
+      <div class="field full form-foot">
+        <button type="submit" class="btn btn-brass" id="inquirySubmit">Check My Date</button>
+        <span class="form-msg" id="formMsgSuccess">Thank you — we'll be in touch shortly.</span>
+        <span class="form-msg" id="formMsgError" style="color:#D98E6B;">Something went wrong — please email hello@magneticmomentscolorado.com directly.</span>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="word-mark">MAGNETIC MOMENTS</span>
+    <div class="foot-links">
+      <a href="#inquire">Check Your Date</a>
+      <a href="mailto:hello@magneticmomentscolorado.com">hello@magneticmomentscolorado.com</a>
+      <!-- TODO: replace with the real Magnetic Moments Instagram URL before publishing -->
+      <a href="https://instagram.com/PLACEHOLDER-add-real-handle" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('siteNav');
+  const onScroll = () => {
+    if(window.scrollY > 40){ nav.classList.add('scrolled'); }
+    else{ nav.classList.remove('scrolled'); }
+  };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // ============================================================
+  // FORM SUBMISSION HANDLER — see the comment above the <form> tag
+  // for the one-time setup required (Formspree endpoint).
+  // Once action="" on the form points to a real endpoint, this
+  // sends the inquiry there via fetch and shows a real success
+  // or error state based on what the server returns.
+  // ============================================================
+  const form = document.getElementById('inquiryForm');
+  const submitBtn = document.getElementById('inquirySubmit');
+  const successMsg = document.getElementById('formMsgSuccess');
+  const errorMsg = document.getElementById('formMsgError');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    successMsg.style.display = 'none';
+    errorMsg.style.display = 'none';
+
+    if(form.action.includes('YOUR_FORM_ID')){
+      // Endpoint hasn't been configured yet — see setup comment above the form.
+      console.warn('Magnetic Moments inquiry form: no submission endpoint configured yet.');
+      errorMsg.textContent = 'This form isn\u2019t connected yet — please email hello@magneticmomentscolorado.com directly.';
+      errorMsg.style.display = 'inline';
+      return;
+    }
+
+    submitBtn.setAttribute('disabled','disabled');
+
+    fetch(form.action, {
+      method:'POST',
+      body:new FormData(form),
+      headers:{ 'Accept':'application/json' }
+    }).then(function(response){
+      if(response.ok){
+        form.reset();
+        successMsg.style.display = 'inline';
+      } else {
+        errorMsg.textContent = 'Something went wrong — please email hello@magneticmomentscolorado.com directly.';
+        errorMsg.style.display = 'inline';
+        submitBtn.removeAttribute('disabled');
+      }
+    }).catch(function(){
+      errorMsg.textContent = 'Something went wrong — please email hello@magneticmomentscolorado.com directly.';
+      errorMsg.style.display = 'inline';
+      submitBtn.removeAttribute('disabled');
+    });
+  });
+</script>
+
+</body>
+</html>
