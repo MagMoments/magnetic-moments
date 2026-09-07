@@ -196,6 +196,12 @@
     z-index:1;
     pointer-events:none;
   }
+  .ph video, .ph img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    z-index:0;
+  }
 
   /* ---------- HERO ---------- */
   .hero{
@@ -477,7 +483,7 @@
     color:rgba(241,236,225,0.55);
     margin-bottom:9px;
   }
-  .field label .req{color:var(--brass-light); letter-spacing:normal;}
+  .field label .req{color:var(--brass-light); margin-left:2px;}
   .field input, .field textarea{
     width:100%;
     background:transparent;
@@ -528,7 +534,9 @@
 <!-- ============ HERO ============ -->
 <section class="hero" id="hero">
   <div class="ph dark">
-    <div class="ph-tag"><b>Replace with:</b> looping video — printer feeding a photo, hands trimming it, the press descending, the finished magnet lifted out. Tight framing, warm tungsten light, guest faces optional.</div>
+    <video autoplay muted loop playsinline poster="magnets-in-hand.jpg">
+      <source src="hero-transform.mp4" type="video/mp4">
+    </video>
   </div>
   <div class="hero-inner">
     <div class="wrap">
@@ -598,19 +606,6 @@
       <h2 style="margin-top:14px;">Printed, cut, and pressed in front of your guests.</h2>
       <p>The photo moves from printer to cutter to press in a few minutes, and guests can watch the whole process happen.</p>
     </div>
-    <div class="craft-strip">
-      <div class="ph">
-        <div class="ph-frame"></div>
-        <div class="ph-tag"><b>Replace with:</b> the mechanical press mid-motion — brass press plate, red handle, a photo magnet visible under it. Close, warm light, shallow depth of field.</div>
-      </div>
-      <div class="ph">
-        <div class="ph-tag"><b>Replace with:</b> hands trimming a freshly printed photo on the cutter.</div>
-      </div>
-      <div class="ph">
-        <div class="ph-tag"><b>Replace with:</b> the finished magnet lifted straight out of the press, still warm, held between two fingers.</div>
-      </div>
-    </div>
-    <p class="craft-cap">From left: the press · the cut · the reveal</p>
   </div>
 </section>
 
@@ -619,8 +614,7 @@
   <div class="wrap gallery-wrap">
     <div class="gallery-img">
       <div class="ph">
-        <div class="ph-frame"></div>
-        <div class="ph-tag"><b>Replace with:</b> the walnut gallery board mid-evening, dozens of finished magnets arranged in its slots, warm brass gallery light overhead.</div>
+        <img src="guest-collection.webp" alt="Finished wedding photo magnets displayed on a wooden gallery board">
       </div>
     </div>
     <div class="gallery-text">
@@ -685,10 +679,10 @@
   <div class="wrap">
     <div class="founding">
       <div>
-        <span class="eyebrow">Dates available starting October 2026</span>
+        <span class="eyebrow">Select 2026 dates</span>
         <h2 style="margin-top:12px;">Founding Wedding Collection</h2>
       </div>
-      <p>I'm looking for two Colorado couples to be among the first to bring Magnetic Moments to their wedding. Founding rates are available in exchange for permission to professionally photograph and film the experience.</p>
+      <p>A limited number of 2026 Colorado weddings are being selected for our inaugural collection. Introductory pricing may be available in exchange for permission to professionally photograph and film on site.</p>
     </div>
   </div>
 </section>
@@ -724,7 +718,7 @@
       </details>
       <details class="faq-item">
         <summary>How much space do you need?<span class="icon">+</span></summary>
-        <p class="faq-a">Sized to the footprint of a 6-foot table — enough presence to feel like a destination within your reception, without ever crowding the room. We'll work with your planner to place it exactly where it belongs.</p>
+        <p class="faq-a">Sized to the footprint of a 6-foot table for the working station, plus a nearby easel for the finished-magnet display — enough presence to feel like a destination within your reception, without ever crowding the room. We'll work with your planner to place it exactly where it belongs.</p>
       </details>
       <details class="faq-item">
         <summary>What do you need from the venue to set up?<span class="icon">+</span></summary>
@@ -774,27 +768,37 @@ Do not add until authentic proof is available.
     </div>
     <!--
       ============================================================
-      FORM SUBMISSION — CONNECTED (Formspree)
+      FORM SUBMISSION — NEEDS CONFIGURATION BEFORE PUBLISHING
       ============================================================
-      Endpoint: https://formspree.io/f/xaeypaja
-      Submissions land in the inbox on that Formspree account.
+      This form is not yet connected to anything. As written, submitting
+      it will not send the inquiry anywhere.
 
-      To point this at a different Formspree form later, just swap
-      the URL in the action="" attribute below — nothing else to
-      change. The JavaScript at the bottom of the page (search
-      "FORM SUBMISSION HANDLER") submits to whatever URL is there
-      and shows a real success or error message based on the
-      response.
+      Recommended fix (no custom backend required): Formspree.
+        1. Create a free account at https://formspree.io
+        2. Create a new form and copy the endpoint it gives you,
+           e.g. https://formspree.io/f/abcdwxyz
+        3. Replace YOUR_FORM_ID below in the action="" attribute with
+           that endpoint.
+        4. Formspree will email you (and can email the couple a copy)
+           every time this form is submitted — no server needed.
+        5. Verify the sending domain in Formspree once you know where
+           this page will be hosted, so submissions aren't marked spam.
+
+      The JavaScript at the bottom of the page (search "FORM SUBMISSION
+      HANDLER") already submits to whatever URL is in action="" below
+      and shows a real success or error message based on the response.
+      Once you drop in your Formspree endpoint, the form is fully
+      functional — no other changes needed.
       ============================================================
     -->
-    <form class="inquiry" id="inquiryForm" action="https://formspree.io/f/xaeypaja" method="POST">
+    <form class="inquiry" id="inquiryForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
       <input type="hidden" name="_subject" value="New wedding inquiry — Magnetic Moments">
       <div class="field">
-        <label for="names">Couple's names <span class="req">*</span></label>
+        <label for="names">Couple's names<span class="req">*</span></label>
         <input type="text" id="names" name="names" placeholder="Jordan &amp; Sam" required>
       </div>
       <div class="field">
-        <label for="email">Email <span class="req">*</span></label>
+        <label for="email">Email<span class="req">*</span></label>
         <input type="email" id="email" name="email" placeholder="you@email.com" required>
       </div>
       <div class="field">
@@ -802,23 +806,23 @@ Do not add until authentic proof is available.
         <input type="tel" id="phone" name="phone" placeholder="(303) 555-0123">
       </div>
       <div class="field">
-        <label for="date">Wedding date <span class="req">*</span></label>
+        <label for="date">Wedding date<span class="req">*</span></label>
         <input type="date" id="date" name="date" required>
       </div>
       <div class="field">
-        <label for="receptionTime">Reception start time (approx.) <span class="req">*</span></label>
+        <label for="receptionTime">Reception start time (approx.)<span class="req">*</span></label>
         <input type="time" id="receptionTime" name="receptionTime" required>
       </div>
       <div class="field">
-        <label for="venue">Venue <span class="req">*</span></label>
+        <label for="venue">Venue<span class="req">*</span></label>
         <input type="text" id="venue" name="venue" placeholder="Venue name" required>
       </div>
       <div class="field">
-        <label for="city">City <span class="req">*</span></label>
+        <label for="city">City<span class="req">*</span></label>
         <input type="text" id="city" name="city" placeholder="e.g. Winter Park, CO" required>
       </div>
       <div class="field">
-        <label for="guests">Estimated guest count <span class="req">*</span></label>
+        <label for="guests">Estimated guest count<span class="req">*</span></label>
         <input type="text" id="guests" name="guests" placeholder="e.g. 80" required>
       </div>
       <div class="field">
