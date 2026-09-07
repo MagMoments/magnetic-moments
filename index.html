@@ -196,6 +196,12 @@
     z-index:1;
     pointer-events:none;
   }
+  .ph video, .ph img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    z-index:0;
+  }
 
   /* ---------- HERO ---------- */
   .hero{
@@ -527,7 +533,9 @@
 <!-- ============ HERO ============ -->
 <section class="hero" id="hero">
   <div class="ph dark">
-    <div class="ph-tag"><b>Replace with:</b> looping video — printer feeding a photo, hands trimming it, the press descending, the finished magnet lifted out. Tight framing, warm tungsten light, guest faces optional.</div>
+    <video autoplay muted loop playsinline poster="magnets-in-hand.jpg">
+      <source src="hero-transform.mp4" type="video/mp4">
+    </video>
   </div>
   <div class="hero-inner">
     <div class="wrap">
@@ -597,19 +605,6 @@
       <h2 style="margin-top:14px;">Printed, cut, and pressed in front of your guests.</h2>
       <p>The photo moves from printer to cutter to press in a few minutes, and guests can watch the whole process happen.</p>
     </div>
-    <div class="craft-strip">
-      <div class="ph">
-        <div class="ph-frame"></div>
-        <div class="ph-tag"><b>Replace with:</b> the mechanical press mid-motion — brass press plate, red handle, a photo magnet visible under it. Close, warm light, shallow depth of field.</div>
-      </div>
-      <div class="ph">
-        <div class="ph-tag"><b>Replace with:</b> hands trimming a freshly printed photo on the cutter.</div>
-      </div>
-      <div class="ph">
-        <div class="ph-tag"><b>Replace with:</b> the finished magnet lifted straight out of the press, still warm, held between two fingers.</div>
-      </div>
-    </div>
-    <p class="craft-cap">From left: the press · the cut · the reveal</p>
   </div>
 </section>
 
@@ -618,8 +613,7 @@
   <div class="wrap gallery-wrap">
     <div class="gallery-img">
       <div class="ph">
-        <div class="ph-frame"></div>
-        <div class="ph-tag"><b>Replace with:</b> the walnut gallery board mid-evening, dozens of finished magnets arranged in its slots, warm brass gallery light overhead.</div>
+        <img src="magnets-in-hand.jpg" alt="Two finished photo magnets held in hand">
       </div>
     </div>
     <div class="gallery-text">
