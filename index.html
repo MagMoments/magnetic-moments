@@ -435,6 +435,18 @@
   @media(max-width:768px){ .founding{grid-template-columns:1fr; padding:40px 28px;} }
   .founding h2{font-size:clamp(24px,3vw,32px);}
   .founding p{margin-top:14px; font-size:16px; color:#3A342C; line-height:1.7;}
+  .founding-rates{margin-top:20px; list-style:none; padding:0;}
+  .founding-rates li{
+    display:flex; justify-content:space-between; align-items:baseline;
+    max-width:360px;
+    padding:9px 0;
+    border-bottom:1px solid var(--line-light);
+    font-size:15.5px; color:#3A342C;
+  }
+  .founding-rates li .mark{color:var(--brass); margin-right:10px;}
+  .founding-rates li s{color:rgba(58,52,44,0.4); margin-left:auto; font-size:14px;}
+  .founding-rates li b{color:var(--walnut-deep); font-family:var(--serif); font-size:17px; margin-left:8px;}
+  .founding-note{margin-top:14px !important; font-size:13px !important; color:rgba(58,52,44,0.6) !important; font-style:italic;}
 
   /* ---------- FAQ ---------- */
   .faq-head{max-width:520px; margin-bottom:44px;}
@@ -679,10 +691,16 @@
   <div class="wrap">
     <div class="founding">
       <div>
-        <span class="eyebrow">Select 2026 dates</span>
+        <span class="eyebrow">Available starting October 2026</span>
         <h2 style="margin-top:12px;">Founding Wedding Collection</h2>
       </div>
-      <p>A limited number of 2026 Colorado weddings are being selected for our inaugural collection. Introductory pricing may be available in exchange for permission to professionally photograph and film on site.</p>
+      <p>A limited number of 2026 Colorado weddings are being selected for our inaugural collection, with availability beginning October 2026. Introductory pricing may be available in exchange for permission to professionally photograph and film on site.</p>
+      <ul class="founding-rates">
+        <li><span class="mark">—</span>Up to 50 guests <s>$1,250</s> <b>$795</b></li>
+        <li><span class="mark">—</span>51–75 guests <s>$1,500</s> <b>$995</b></li>
+        <li><span class="mark">—</span>76–100 guests <s>$1,750</s> <b>$1,195</b></li>
+      </ul>
+      <p class="founding-note">Launch rates available for our first two booked events.</p>
     </div>
   </div>
 </section>
