@@ -477,6 +477,7 @@
     color:rgba(241,236,225,0.55);
     margin-bottom:9px;
   }
+  .field label .req{color:var(--brass-light); letter-spacing:normal;}
   .field input, .field textarea{
     width:100%;
     background:transparent;
@@ -789,11 +790,11 @@ Do not add until authentic proof is available.
     <form class="inquiry" id="inquiryForm" action="https://formspree.io/f/xaeypaja" method="POST">
       <input type="hidden" name="_subject" value="New wedding inquiry — Magnetic Moments">
       <div class="field">
-        <label for="names">Couple's names</label>
+        <label for="names">Couple's names <span class="req">*</span></label>
         <input type="text" id="names" name="names" placeholder="Jordan &amp; Sam" required>
       </div>
       <div class="field">
-        <label for="email">Email</label>
+        <label for="email">Email <span class="req">*</span></label>
         <input type="email" id="email" name="email" placeholder="you@email.com" required>
       </div>
       <div class="field">
@@ -801,24 +802,24 @@ Do not add until authentic proof is available.
         <input type="tel" id="phone" name="phone" placeholder="(303) 555-0123">
       </div>
       <div class="field">
-        <label for="date">Wedding date</label>
+        <label for="date">Wedding date <span class="req">*</span></label>
         <input type="date" id="date" name="date" required>
       </div>
       <div class="field">
-        <label for="receptionTime">Reception start time (approx.)</label>
-        <input type="time" id="receptionTime" name="receptionTime">
+        <label for="receptionTime">Reception start time (approx.) <span class="req">*</span></label>
+        <input type="time" id="receptionTime" name="receptionTime" required>
       </div>
       <div class="field">
-        <label for="venue">Venue</label>
-        <input type="text" id="venue" name="venue" placeholder="Venue name">
+        <label for="venue">Venue <span class="req">*</span></label>
+        <input type="text" id="venue" name="venue" placeholder="Venue name" required>
       </div>
       <div class="field">
-        <label for="city">City</label>
-        <input type="text" id="city" name="city" placeholder="e.g. Winter Park, CO">
+        <label for="city">City <span class="req">*</span></label>
+        <input type="text" id="city" name="city" placeholder="e.g. Winter Park, CO" required>
       </div>
       <div class="field">
-        <label for="guests">Estimated guest count</label>
-        <input type="text" id="guests" name="guests" placeholder="e.g. 80">
+        <label for="guests">Estimated guest count <span class="req">*</span></label>
+        <input type="text" id="guests" name="guests" placeholder="e.g. 80" required>
       </div>
       <div class="field">
         <label for="planner">Planner / planner email (optional)</label>
