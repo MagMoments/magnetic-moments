@@ -534,6 +534,7 @@
       <div class="cta-row">
         <a href="#inquire" class="btn btn-brass">Check Your Date</a>
       </div>
+      <p style="margin-top:16px; font-size:13.5px; letter-spacing:0.03em; color:var(--ivory); opacity:0.75;">Packages begin at $1,250</p>
     </div>
   </div>
   <div class="scroll-cue">Scroll to see how it works</div>
@@ -636,8 +637,7 @@
     <ul class="why-list">
       <li><span class="mark">—</span>A photo chosen by each guest, personal to them.</li>
       <li><span class="mark">—</span>A live process guests can stop by and watch throughout the reception.</li>
-      <li><span class="mark">—</span>A finished magnet they leave with that night.</li>
-      <li><span class="mark">—</span>A refined wood-and-brass station designed to belong in the room.</li>
+      <li><span class="mark">—</span>A finished 2×3 inch magnet they leave with that night.</li>
       <li><span class="mark">—</span>Setup, service and breakdown completely handled for you.</li>
     </ul>
   </div>
@@ -730,6 +730,14 @@
         <summary>Can this be customized?<span class="icon">+</span></summary>
         <p class="faq-a">Small details such as gallery signage and wedding-specific prompts can be tailored to your celebration, while the production process remains consistent for every guest.</p>
       </details>
+      <details class="faq-item">
+        <summary>How big is the magnet?<span class="icon">+</span></summary>
+        <p class="faq-a">Each keepsake magnet measures 2×3 inches — small enough to tuck in a bag that night, sized to actually earn a spot on the fridge.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do you only do weddings?<span class="icon">+</span></summary>
+        <p class="faq-a">Weddings are our focus, but the same live magnet experience works well for corporate events, holiday parties, and conferences. Reach out with your event details and we'll let you know how it can fit.</p>
+      </details>
     </div>
   </div>
 </section>
@@ -792,6 +800,10 @@ Do not add until authentic proof is available.
         <input type="date" id="date" name="date" required>
       </div>
       <div class="field">
+        <label for="receptionTime">Reception start time (approx.)</label>
+        <input type="time" id="receptionTime" name="receptionTime">
+      </div>
+      <div class="field">
         <label for="venue">Venue</label>
         <input type="text" id="venue" name="venue" placeholder="Venue name">
       </div>
@@ -814,7 +826,7 @@ Do not add until authentic proof is available.
       <div class="field full form-foot">
         <button type="submit" class="btn btn-brass" id="inquirySubmit">Check My Date</button>
         <span class="form-msg" id="formMsgSuccess">Thank you — we'll be in touch shortly.</span>
-        <span class="form-msg" id="formMsgError" style="color:#D98E6B;">Something went wrong — please email hello@magneticmomentscolorado.com directly.</span>
+        <span class="form-msg" id="formMsgError" style="color:#D98E6B;">Something went wrong — please email magneticmomentscolorado@gmail.com directly.</span>
       </div>
     </form>
   </div>
@@ -825,9 +837,9 @@ Do not add until authentic proof is available.
     <span class="word-mark">MAGNETIC MOMENTS</span>
     <div class="foot-links">
       <a href="#inquire">Check Your Date</a>
-      <a href="mailto:hello@magneticmomentscolorado.com">hello@magneticmomentscolorado.com</a>
+      <a href="mailto:magneticmomentscolorado@gmail.com">magneticmomentscolorado@gmail.com</a>
       <!-- TODO: replace with the real Magnetic Moments Instagram URL before publishing -->
-      <a href="https://instagram.com/PLACEHOLDER-add-real-handle" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.instagram.com/magneticmomentscolorado/" target="_blank" rel="noopener">Instagram</a>
     </div>
   </div>
 </footer>
@@ -861,7 +873,7 @@ Do not add until authentic proof is available.
     if(form.action.includes('YOUR_FORM_ID')){
       // Endpoint hasn't been configured yet — see setup comment above the form.
       console.warn('Magnetic Moments inquiry form: no submission endpoint configured yet.');
-      errorMsg.textContent = 'This form isn\u2019t connected yet — please email hello@magneticmomentscolorado.com directly.';
+      errorMsg.textContent = 'This form isn\u2019t connected yet — please email magneticmomentscolorado@gmail.com directly.';
       errorMsg.style.display = 'inline';
       return;
     }
@@ -877,12 +889,12 @@ Do not add until authentic proof is available.
         form.reset();
         successMsg.style.display = 'inline';
       } else {
-        errorMsg.textContent = 'Something went wrong — please email hello@magneticmomentscolorado.com directly.';
+        errorMsg.textContent = 'Something went wrong — please email magneticmomentscolorado@gmail.com directly.';
         errorMsg.style.display = 'inline';
         submitBtn.removeAttribute('disabled');
       }
     }).catch(function(){
-      errorMsg.textContent = 'Something went wrong — please email hello@magneticmomentscolorado.com directly.';
+      errorMsg.textContent = 'Something went wrong — please email magneticmomentscolorado@gmail.com directly.';
       errorMsg.style.display = 'inline';
       submitBtn.removeAttribute('disabled');
     });
