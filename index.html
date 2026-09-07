@@ -501,9 +501,12 @@
     display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:18px;
   }
   footer .word-mark{font-size:15px; color:rgba(241,236,225,0.85);}
-  footer .foot-links{display:flex; gap:26px; font-size:13px; letter-spacing:0.03em; flex-wrap:wrap;}
+  footer .foot-links{display:flex; gap:26px; font-size:13px; letter-spacing:0.03em; flex-wrap:wrap; align-items:center;}
   footer .foot-links a{border-bottom:1px solid transparent;}
   footer .foot-links a:hover{border-color:currentColor;}
+  footer .insta-icon{display:inline-flex; border-bottom:none !important; color:var(--brass-light); opacity:0.85; transition:opacity 0.3s ease;}
+  footer .insta-icon:hover{opacity:1;}
+  footer .insta-icon svg{width:18px; height:18px; display:block;}
   @media(max-width:560px){
     footer .wrap{flex-direction:column; align-items:flex-start;}
     footer .foot-links{gap:16px 22px;}
@@ -703,6 +706,10 @@
         <p class="faq-a">Every image comes from a guest's own phone, often a photo taken just moments earlier. We handle the printing, cutting and pressing.</p>
       </details>
       <details class="faq-item">
+        <summary>Are you insured?<span class="icon">+</span></summary>
+        <p class="faq-a">Yes — Magnetic Moments carries full liability insurance, and we're happy to provide a certificate of insurance (COI) for your venue upon request.</p>
+      </details>
+      <details class="faq-item">
         <summary>How does my guest get their magnet?<span class="icon">+</span></summary>
         <p class="faq-a">Once pressed, it's placed on the gallery display for guests to find and take home before they leave.</p>
       </details>
@@ -716,19 +723,27 @@
       </details>
       <details class="faq-item">
         <summary>How much space do you need?<span class="icon">+</span></summary>
-        <p class="faq-a">A single station, about the footprint of a small bar cart, placed wherever it fits your layout and floor plan.</p>
+        <p class="faq-a">Sized to the footprint of a 6-foot table — enough presence to feel like a destination within your reception, without ever crowding the room. We'll work with your planner to place it exactly where it belongs.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What do you need from the venue to set up?<span class="icon">+</span></summary>
+        <p class="faq-a">A standard power outlet within reach, and Wi-Fi nearby to process photos. Let us know what's available at your venue so we can plan ahead.</p>
       </details>
       <details class="faq-item">
         <summary>Do guests need to download anything?<span class="icon">+</span></summary>
         <p class="faq-a">Guests scan the QR code with their phone, then choose a photo they already have saved.</p>
       </details>
       <details class="faq-item">
-        <summary>Where do you travel?<span class="icon">+</span></summary>
-        <p class="faq-a">We regularly serve the Front Range and select Colorado mountain and destination venues. Weddings farther afield are quoted individually.</p>
+        <summary>Does the price include travel?<span class="icon">+</span></summary>
+        <p class="faq-a">Yes — standard travel is included anywhere in our core Front Range service area (Denver, Boulder, Fort Collins, Colorado Springs, and similar). Mountain and destination venues (Winter Park, Vail, Aspen, Estes Park, and similar) are quoted individually.</p>
       </details>
       <details class="faq-item">
-        <summary>Can this be customized?<span class="icon">+</span></summary>
-        <p class="faq-a">Small details such as gallery signage and wedding-specific prompts can be tailored to your celebration, while the production process remains consistent for every guest.</p>
+        <summary>How does payment work?<span class="icon">+</span></summary>
+        <p class="faq-a">A 50% retainer secures your date at booking, with the remaining balance due in full no later than 14 days before your event — leaving our full attention free for your guests and your celebration on the day itself.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What's your cancellation policy?<span class="icon">+</span></summary>
+        <p class="faq-a">Your retainer secures your date and isn't refundable. Cancel more than 60 days out and nothing further is owed. Closer than that, the full balance may still apply, since it's rarely possible to rebook that date.</p>
       </details>
       <details class="faq-item">
         <summary>How big is the magnet?<span class="icon">+</span></summary>
@@ -838,8 +853,13 @@ Do not add until authentic proof is available.
     <div class="foot-links">
       <a href="#inquire">Check Your Date</a>
       <a href="mailto:magneticmomentscolorado@gmail.com">magneticmomentscolorado@gmail.com</a>
-      <!-- TODO: replace with the real Magnetic Moments Instagram URL before publishing -->
-      <a href="https://www.instagram.com/magneticmomentscolorado/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.instagram.com/magneticmomentscolorado/" target="_blank" rel="noopener" class="insta-icon" aria-label="Magnetic Moments on Instagram">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="12" cy="12" r="4.6" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/>
+        </svg>
+      </a>
     </div>
   </div>
 </footer>
